@@ -32,4 +32,41 @@ public class VenueRegistrationService : IVenueRegistrationService
 
        return result;
     }
+
+
+   public int AddArtist(ArtistLite al)
+   {
+       int result = 1;
+       Artist a = new Artist();
+       a.ArtistName = al.ArtistName;
+       a.ArtistEmail = al.Email;
+       a.ArtistWebPage = al.WebPage;
+       a.ArtistDateEntered = DateTime.Now;
+
+
+       try
+       {
+
+           st.Artists.Add(a);
+           st.SaveChanges();
+       }
+       catch (Exception ex)
+       {
+           result = 0;
+           throw ex;
+       }
+
+       return result;
+      
+   }
+
+   public int AddShow(ShowLite sl)
+   {
+       throw new NotImplementedException();
+   }
+
+   public int AddShowDetails(ShowDetailsLite sdl)
+   {
+       throw new NotImplementedException();
+   }
 }

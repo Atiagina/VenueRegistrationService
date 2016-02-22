@@ -9,6 +9,12 @@
         <EntityTypeShape EntityType="ShowTrackerModel.Venue" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ShowTrackerModel.VenueLogin" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="ShowTrackerModel.FK__VenueLogi__Venue__31EC6D26" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ShowTrackerModel.Artist" Width="1.5" PointX="3" PointY="11.625" />
+        <EntityTypeShape EntityType="ShowTrackerModel.Show" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="ShowTrackerModel.ShowDetail" Width="1.5" PointX="5.25" PointY="7.625" />
+        <AssociationConnector Association="ShowTrackerModel.FK__ShowDetai__Artis__300424B4" />
+        <AssociationConnector Association="ShowTrackerModel.FK__Show__VenueKey__2F10007B" />
+        <AssociationConnector Association="ShowTrackerModel.FK__ShowDetai__ShowK__30F848ED" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
