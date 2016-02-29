@@ -62,11 +62,75 @@ public class VenueRegistrationService : IVenueRegistrationService
 
    public int AddShow(ShowLite sl)
    {
-       throw new NotImplementedException();
+       int result = 1;
+
+       sl.VenueKey = 1;
+
+       Show s = new Show();
+       
+
+       var vk = from v in st.Shows
+                where v.Venue.VenueName.Equals(sl.ShowName)
+                select new { v.VenueKey };
+
+       s.VenueKey = sl.VenueKey;
+       s.ShowName = sl.ShowName;
+       s.ShowDate = sl.ShowDate;
+       s.ShowTime = sl.ShowTime;
+       s.ShowTicketInfo = sl.ShowTicket;
+       s.ShowDateEntered = DateTime.Now;
+ 
+       try
+       {
+
+           st.Shows.Add(s);
+           st.SaveChanges();
+       }
+       catch (Exception ex)
+       {
+           result = 0;
+           throw ex;
+       }
+       return result;
    }
 
    public int AddShowDetails(ShowDetailsLite sdl)
    {
-       throw new NotImplementedException();
+       int result = 1;
+
+       sdl.ShowKey = 8;
+       sdl.ArtistKey = 9;
+
+       ShowDetail sd = new ShowDetail();
+     
+
+       var shk = from sk in st.ShowDetails
+                where sk.Show.ShowName.Equals(sdl.ShowName)
+                select new { sk.ShowKey };
+
+       var ark = from ak in st.ShowDetails
+                 where ak.Artist.ArtistName.Equals(sdl.ArtistNames)
+                 select new { ak.ArtistKey };
+
+       sd.ArtistKey = sdl.ArtistKey;
+       sd.ShowKey = sdl.ShowKey;
+       sd.ShowDetailArtistStartTime = sdl.ShowDetailArtistStartTime;
+       sd.ShowDetailAdditional = sdl.ShowDetailAdditional;
+
+
+       try
+       {
+
+           st.ShowDetails.Add(sd);
+           st.SaveChanges();
+       }
+       catch (Exception ex)
+       {
+           result = 0;
+           throw ex;
+       }
+
+       return result;
+
    }
 }

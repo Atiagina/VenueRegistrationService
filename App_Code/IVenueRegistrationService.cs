@@ -82,17 +82,24 @@ public class ArtistLite
 [DataContract]
 public class ShowLite
 {
+   /* [DataMember]
+    public string VenueName
+    { set; get; } */
+
     [DataMember]
     public string ShowName { set; get; }
 
     [DataMember]
-    public int ShowDate { set; get; }
+    public DateTime ShowDate { set; get; }
 
     [DataMember]
-    public int ShowTime { set; get; }
+    public TimeSpan ShowTime { set; get; }
 
     [DataMember]
     public string ShowTicket { set; get; }
+
+    [DataMember]
+    public int VenueKey { set; get; }
 
 }
 
@@ -100,15 +107,25 @@ public class ShowLite
 
 public class ShowDetailsLite
 {
+
+    
     [DataMember]
-    public string ShowKey { set; get; }
+   public List<string> ArtistNames
+   { set; get; }
 
     [DataMember]
-    public string ArtistKey { set; get; }
+    public int ArtistKey { set; get; }
 
     [DataMember]
-    public string ShowDetailArtistStartTime { set; get; }
+    public TimeSpan ShowDetailArtistStartTime { set; get; }
 
     [DataMember]
     public string ShowDetailAdditional { set; get; }
+
+    [DataMember]
+    public int ShowKey { set; get; }
+
+    [DataMember]
+    public string ShowName { set; get; }
+
 }
