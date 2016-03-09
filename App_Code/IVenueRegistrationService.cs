@@ -82,9 +82,6 @@ public class ArtistLite
 [DataContract]
 public class ShowLite
 {
-   /* [DataMember]
-    public string VenueName
-    { set; get; } */
 
     [DataMember]
     public string ShowName { set; get; }
@@ -108,10 +105,9 @@ public class ShowLite
 public class ShowDetailsLite
 {
 
-    
+
     [DataMember]
-   public List<string> ArtistNames
-   { set; get; }
+    public string ArtistName { set; get; } 
 
     [DataMember]
     public int ArtistKey { set; get; }
@@ -122,10 +118,10 @@ public class ShowDetailsLite
     [DataMember]
     public string ShowDetailAdditional { set; get; }
 
-    [DataMember]
-    public int ShowKey { set; get; }
+   [DataMember]
+    public int ShowKey { set; get; } 
 
     [DataMember]
-    public string ShowName { set; get; }
+    public string ShowName { set; get; } 
 
 }

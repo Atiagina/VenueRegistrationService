@@ -64,7 +64,6 @@ public class VenueRegistrationService : IVenueRegistrationService
    {
        int result = 1;
 
-       sl.VenueKey = 1;
 
        Show s = new Show();
        
@@ -98,22 +97,37 @@ public class VenueRegistrationService : IVenueRegistrationService
    {
        int result = 1;
 
-       sdl.ShowKey = 8;
-       sdl.ArtistKey = 9;
 
        ShowDetail sd = new ShowDetail();
      
 
-       var shk = from sk in st.ShowDetails
-                where sk.Show.ShowName.Equals(sdl.ShowName)
+       var shk = from sk in st.Shows
+              where sk.ShowName.Equals(sdl.ShowName)
                 select new { sk.ShowKey };
 
-       var ark = from ak in st.ShowDetails
-                 where ak.Artist.ArtistName.Equals(sdl.ArtistNames)
+       int skey = 0;
+
+       foreach (var i in shk)
+       {
+           skey = (int)i.ShowKey;
+       }
+
+       var ark = from ak in st.Artists
+                 where ak.ArtistName.Equals(sdl.ArtistName)
                  select new { ak.ArtistKey };
 
-       sd.ArtistKey = sdl.ArtistKey;
-       sd.ShowKey = sdl.ShowKey;
+
+    
+       int akey = 0;
+
+       foreach (var c in ark)
+       {
+           akey = (int)c.ArtistKey;
+       }
+      
+
+       sd.ArtistKey = akey;
+       sd.ShowKey = skey;
        sd.ShowDetailArtistStartTime = sdl.ShowDetailArtistStartTime;
        sd.ShowDetailAdditional = sdl.ShowDetailAdditional;
 
